@@ -1,282 +1,109 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <script>
-    window.__resources = {
-      iconYoutube: 'assets/youtube_icon.png',
-      iconInstagram: 'assets/instagram_icon.png',
-      logoImg: 'assets/anmane_logo.png',
-      iconSpotify: 'assets/spotify_icon.png',
-      iconTiktok: 'assets/tiktok_icon.png',
-      patreonBtn: 'assets/patreon_icon.png',
-      bgVideo: 'assets/background_video.mp4'
-    };
-  </script>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANMANE</title>
-
-  <!-- ext-resource-dependency declarations for bundler -->
-  
-  
-  
-  
-  
-  
-  
-
-  <style>
-    @font-face {
-      font-family: 'BlockBlueprint';
-      src: url("assets/fonts/BlockBlueprint.ttf") format('truetype');
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'CSStriveMono';
-      src: url("assets/fonts/CSStriveMono-Regular_demo.otf") format('opentype');
-      font-display: swap;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: #000; }
-    body {
-      background: #000; color: #fff;
-      font-family: 'CSStriveMono', 'Courier New', monospace;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    img { display: block; }
-    a { color: inherit; text-decoration: none; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #000; }
-    ::-webkit-scrollbar-thumb { background: #222; }
-    #root { min-height: 100vh; }
-  </style>
-
-  <!-- Bundler thumbnail -->
-  
-
-  <script src="js/react.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="js/react-dom.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="js/babel.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="root"></div>
+  <video class="hero-video" src="assets/background_video.mp4" autoplay muted loop playsinline></video>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
 
-  <!-- FooterBar -->
-  <script type="text/babel">
-    const FooterBar = ({ position = 'absolute' }) => {
-      const s = {
-        wrap: {
-          position,
-          bottom: 0, left: 0, right: 0,
-          padding: '9px 20px',
-          borderTop: '1px solid #1a1a1a',
-          background: 'rgba(0,0,0,0.6)',
-          display: 'flex',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '6px',
-          fontFamily: "'CSStriveMono', 'Courier New', monospace",
-          fontSize: '10px',
-          color: '#555',
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          zIndex: 10,
-        },
-        sep: { color: '#2a2a2a', margin: '0 3px' },
-      };
+      <div class="hero-logo-wrap">
+        <img class="hero-logo" src="assets/anmane_logo.png" alt="ANMANE" draggable="false">
+      </div>
 
-      const items = [
-        '0_33',
-        'INFINITY PROTOCOL\u00b0 \u25cb',
-        'ZENTA',
-        'DROP SERIES 21 09.25 \u203a 05.10.25',
-        'SECTOR 7G, NEO-TOKYO GRID, JP 113-0031',
-      ];
+      <div class="hero-bottom-group">
+        <a href="#">
+          <img class="patreon-btn" src="assets/patreon_icon.png" alt="Patreon" draggable="false">
+        </a>
 
-      return (
-        <div style={s.wrap}>
-          {items.map((item, i) => (
-            <React.Fragment key={i}>
-              {i > 0 && <span style={s.sep}>&middot;</span>}
-              <span>{item}</span>
-            </React.Fragment>
-          ))}
+        <div class="social-row">
+          <a href="https://www.tiktok.com/@anmane.prod" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="assets/tiktok_icon.png" alt="TikTok" draggable="false">
+          </a>
+          <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="assets/spotify_icon.png" alt="Spotify" draggable="false">
+          </a>
+          <a href="https://www.instagram.com/anmane.prod/" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="assets/instagram_icon.png" alt="Instagram" draggable="false">
+          </a>
+          <a href="https://www.youtube.com/@anmaneprod" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="assets/youtube_icon.png" alt="YouTube" draggable="false">
+          </a>
         </div>
-      );
-    };
+      </div>
 
-    /* ---- Hero ---- */
-    const Hero = () => {
-      const R = window.__resources || {};
-      const heroStyles = {
-        section: {
-          position: 'relative', width: '100%', height: '100vh', minHeight: '600px',
-          background: '#000', overflow: 'hidden',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'space-between',
-        },
-        video: {
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', opacity: 0.8, pointerEvents: 'none',
-        },
-        logoWrap: {
-          position: 'relative', zIndex: 2, width: '100%',
-          display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
-          paddingTop: 'clamp(32px, 6vh, 72px)',
-        },
-        logo: {
-          width: 'clamp(300px, 62vw, 820px)',
-          display: 'block', userSelect: 'none', pointerEvents: 'none',
-        },
-        bottomGroup: {
-          position: 'relative', zIndex: 2,
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', gap: '20px', paddingBottom: '64px',
-        },
-        patreonBtn: {
-          display: 'block', height: '60px',
-          cursor: 'pointer', transition: 'opacity 0.15s', userSelect: 'none',
-        },
-        socialRow: { display: 'flex', alignItems: 'center', gap: '22px' },
-        socialIcon: {
-          width: '42px', height: '42px', objectFit: 'contain',
-          cursor: 'pointer', transition: 'opacity 0.15s', display: 'block',
-        },
-      };
+      <!-- FooterBar Marquee -->
+      <div class="marquee-container" style="position: absolute;">
+        <div class="marquee-track">
+          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+        </div>
+        <div class="marquee-track">
+          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+        </div>
+      </div>
+    </section>
 
-      const [patreonHover, setPatreonHover] = React.useState(false);
-      const [hovered, setHovered] = React.useState(null);
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <p class="stat-quote">
+        ANMANE has gained over 3M+ streams on spotify and over 20k videos using my music. Globally, my ghost productions have surpassed 50M+ streams.
+      </p>
+      <div class="stats-columns">
+        <div>
+          <p class="col-head">Releases with major labels such as:</p>
+          <ul class="col-list">
+            <li class="list-item">- LunarMedia</li>
+            <li class="list-item">- 0to8</li>
+            <li class="list-item">- ENARMA</li>
+            <li class="list-item">- Void</li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-head">Collaborations with Artists like:</p>
+          <ul class="col-list">
+            <li class="list-item">- Dj Samir</li>
+            <li class="list-item">- Kobe Mane</li>
+            <li class="list-item">- Hwungii</li>
+            <li class="list-item">- nulled.</li>
+          </ul>
+        </div>
+      </div>
 
-      const socials = [
-        { src: R.iconTiktok,    alt: 'TikTok',    url: 'https://www.tiktok.com/@anmane.prod' },
-        { src: R.iconSpotify,   alt: 'Spotify',   url: 'https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw' },
-        { src: R.iconInstagram, alt: 'Instagram', url: 'https://www.instagram.com/anmane.prod/' },
-        { src: R.iconYoutube,   alt: 'YouTube',   url: 'https://www.youtube.com/@anmaneprod' },
-      ];
-
-      return (
-        <section style={heroStyles.section}>
-          <video style={heroStyles.video} src={R.bgVideo} autoPlay muted loop playsInline />
-
-          <div style={heroStyles.logoWrap}>
-            <img style={heroStyles.logo} src={R.logoImg} alt="ANMANE" draggable="false" />
-          </div>
-
-          <div style={heroStyles.bottomGroup}>
-            <a href="#" onClick={e => e.preventDefault()}>
-              <img
-                src={R.patreonBtn}
-                alt="Patreon"
-                style={{ ...heroStyles.patreonBtn, opacity: patreonHover ? 0.8 : 1 }}
-                onMouseEnter={() => setPatreonHover(true)}
-                onMouseLeave={() => setPatreonHover(false)}
-                draggable="false"
-              />
-            </a>
-
-            <div style={heroStyles.socialRow}>
-              {socials.map(({ src, alt, url }) => (
-                <a key={alt} href={url} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={src} alt={alt}
-                    style={{ ...heroStyles.socialIcon, opacity: hovered === alt ? 0.65 : 1 }}
-                    onMouseEnter={() => setHovered(alt)}
-                    onMouseLeave={() => setHovered(null)}
-                    draggable="false"
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <FooterBar position="absolute" />
-        </section>
-      );
-    };
-
-    /* ---- StatsSection ---- */
-    const StatsSection = () => {
-      const statsStyles = {
-        section: {
-          position: 'relative', width: '100%', minHeight: '100vh',
-          background: '#080808',
-          display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          padding: '80px 8vw 72px',
-          fontFamily: "'CSStriveMono', 'Courier New', monospace",
-        },
-        statQuote: {
-          fontSize: 'clamp(16px, 2.2vw, 26px)', color: '#cccccc',
-          letterSpacing: '0.05em', lineHeight: 1.6,
-          textAlign: 'center', maxWidth: '900px', margin: '0 auto 80px',
-        },
-        columns: {
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: '40px 80px', maxWidth: '860px', margin: '0 auto',
-        },
-        colHead: {
-          fontSize: 'clamp(14px, 1.6vw, 18px)', color: '#cccccc',
-          letterSpacing: '0.05em', lineHeight: 1.5, marginBottom: '12px',
-        },
-        colList: {
-          fontSize: 'clamp(13px, 1.4vw, 16px)', color: '#888888',
-          letterSpacing: '0.05em', lineHeight: 2.0,
-          listStyle: 'none', padding: 0, margin: 0,
-        },
-        listItem: { paddingLeft: '1em' },
-        listItemIndent: { paddingLeft: '2.5em' },
-      };
-
-      const releases = [
-        { label: '- LunarMedia', indent: false },
-        { label: '- 0to8',       indent: true  },
-        { label: '- ENARMA',     indent: false },
-        { label: '- Void',       indent: true  },
-      ];
-      const collabs = [
-        { label: '- Dj Samir',  indent: false },
-        { label: '- Kobe Mane', indent: false },
-        { label: '- Hwungii',   indent: false },
-        { label: '- nulled.',   indent: false },
-      ];
-
-      return (
-        <section style={statsStyles.section}>
-          <p style={statsStyles.statQuote}>
-            ANMANE has gained over 3M+ streams on spotify and over 20k videos using my music.
-          </p>
-          <div style={statsStyles.columns}>
-            <div>
-              <p style={statsStyles.colHead}>Releases with major labels such as:</p>
-              <ul style={statsStyles.colList}>
-                {releases.map(({ label, indent }) => (
-                  <li key={label} style={indent ? statsStyles.listItemIndent : statsStyles.listItem}>{label}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p style={statsStyles.colHead}>Collaborations with Artists like:</p>
-              <ul style={statsStyles.colList}>
-                {collabs.map(({ label }) => (
-                  <li key={label} style={statsStyles.listItem}>{label}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <FooterBar position="absolute" />
-        </section>
-      );
-    };
-
-    const App = () => (
-      <main>
-        <Hero />
-        <StatsSection />
-      </main>
-    );
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
-
-
-</body></html>
+      <!-- FooterBar Marquee -->
+      <div class="marquee-container" style="position: absolute;">
+        <div class="marquee-track">
+          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+        </div>
+        <div class="marquee-track">
+          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
+          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

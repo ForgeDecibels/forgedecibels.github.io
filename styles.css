@@ -1,0 +1,327 @@
+/* ==========================================================================
+   Base Styles & Fonts
+   ========================================================================== */
+
+@font-face {
+  font-family: 'BlockBlueprint';
+  src: url("assets/fonts/BlockBlueprint.ttf") format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CSStriveMono';
+  src: url("assets/fonts/CSStriveMono-Regular_demo.otf") format('opentype');
+  font-display: swap;
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+  background: #000; 
+}
+
+body {
+  background: #000; 
+  color: #fff;
+  font-family: 'CSStriveMono', 'Courier New', monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #222; }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.hero-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-logo-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: clamp(32px, 6vh, 72px);
+}
+
+.hero-logo {
+  width: clamp(300px, 62vw, 820px);
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-bottom-group {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 64px;
+}
+
+.patreon-btn {
+  display: block;
+  height: 60px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+.patreon-btn:hover {
+  opacity: 0.8;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.social-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  display: block;
+}
+
+.social-icon:hover {
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Stats Section
+   ========================================================================== */
+
+.stats-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(8, 8, 8, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 8vw 72px;
+  font-family: 'CSStriveMono', 'Courier New', monospace;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-quote {
+  font-size: clamp(16px, 2.2vw, 26px);
+  color: #cccccc;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+  cursor: default;
+}
+
+.stat-quote:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+.stats-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 80px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.col-head {
+  font-size: clamp(14px, 1.6vw, 18px);
+  color: #cccccc;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: default;
+}
+
+.col-head:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.col-list {
+  font-size: clamp(13px, 1.4vw, 16px);
+  color: #888888;
+  letter-spacing: 0.05em;
+  line-height: 2.0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding-left: 1em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: default;
+}
+
+.list-item:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   Marquee Component
+   ========================================================================== */
+
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  border-top: 1px solid #111;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  font-family: 'CSStriveMono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  animation: marquee 25s linear infinite;
+  flex-shrink: 0;
+  min-width: 100%;
+  justify-content: space-around;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.marquee-sep {
+  color: #222;
+  margin-left: 30px;
+}
+
+/* ==========================================================================
+   Responsive Media Queries (Mobile Specific Adjustments)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hero Section adjustments */
+  .hero-logo-wrap {
+    padding-top: 40px;
+  }
+  
+  .hero-logo {
+    width: 85vw; /* Slightly larger on very small screens compared to clamp */
+  }
+
+  .hero-bottom-group {
+    padding-bottom: 56px;
+    gap: 16px;
+  }
+
+  .patreon-btn {
+    height: 50px;
+  }
+
+  .social-row {
+    gap: 16px;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Stats Section adjustments */
+  .stats-section {
+    padding: 60px 5vw 56px;
+  }
+
+  .stat-quote {
+    font-size: 16px; /* Override clamp for consistent mobile readability */
+    margin: 0 auto 50px;
+  }
+
+  .stats-columns {
+    grid-template-columns: 1fr; /* Stack columns on mobile */
+    gap: 40px;
+    text-align: center; /* Center text on mobile for better balance */
+  }
+
+  .col-head {
+    font-size: 15px;
+  }
+
+  .col-list {
+    font-size: 14px;
+    display: inline-block; /* Helps with centering bullet points */
+    text-align: left; /* Keep the actual list items left-aligned */
+  }
+
+  .list-item {
+    padding-left: 0; /* Remove left padding */
+  }
+  
+  .marquee-container {
+    height: 32px;
+    font-size: 9px;
+  }
+}
