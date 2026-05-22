@@ -66,6 +66,7 @@ a { color: inherit; text-decoration: none; }
   height: 100vh;
   height: 100lvh;
   object-fit: cover;
+  object-position: center;
   opacity: 0.7;
   pointer-events: none;
   z-index: 0;
@@ -267,6 +268,14 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 768px) {
   /* Hero Section adjustments */
+  .hero-video {
+    top: -16vh;
+    top: -16lvh;
+    height: 116vh;
+    height: 116lvh;
+    object-position: center;
+  }
+
   .hero-logo-wrap {
     padding-top: 40px;
   }
