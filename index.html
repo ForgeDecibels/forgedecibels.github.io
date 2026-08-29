@@ -3,107 +3,536 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANMANE</title>
+  <title>ANMANE — Internet Music Producer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <video class="hero-video" src="assets/background_video.mp4" autoplay muted loop playsinline></video>
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
 
-      <div class="hero-logo-wrap">
-        <img class="hero-logo" src="assets/anmane_logo.png" alt="ANMANE" draggable="false">
-      </div>
+  <!-- Interactive Antigravity Particle Field & Ascending Sine Graph Canvas -->
+  <canvas id="antigravity-particles" class="bg-particle-canvas"></canvas>
+  <div class="crt-scanlines"></div>
+  <div class="bg-vignette"></div>
 
-      <div class="hero-bottom-group">
-        <a href="https://www.patreon.com/c/ANMANE" target="_blank" rel="noopener noreferrer">
-          <img class="patreon-btn" src="assets/patreon_icon.png" alt="Patreon" draggable="false">
+  <!-- ==================== FIXED HUD NAVBAR ==================== -->
+  <header class="hud-header">
+    <div class="hud-container">
+      <a href="#hero" class="hud-brand" aria-label="ANMANE Home">
+        <span class="brand-dot"></span>
+        <span class="brand-name">ANMANE</span>
+        <span class="brand-tag">dB</span>
+      </a>
+      <nav class="hud-links">
+        <a href="#about" class="hud-link">About</a>
+        <a href="#releases" class="hud-link">Releases</a>
+        <a href="#patreon" class="hud-link">Project Files</a>
+        <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer" class="hud-btn">
+          <span>SPOTIFY</span>
+          <span class="hud-arrow">↗</span>
         </a>
+      </nav>
+    </div>
+  </header>
 
-        <div class="social-row">
-          <a href="https://www.tiktok.com/@anmane.prod" target="_blank" rel="noopener noreferrer">
-            <img class="social-icon" src="assets/tiktok_icon.png" alt="TikTok" draggable="false">
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        
+        <!-- Telemetry Status Badge -->
+        <div class="hero-telemetry-badge">
+          <span class="pulse-dot"></span>
+          <span class="badge-code">2026</span>
+        </div>
+
+        <!-- Big Impact Center Visual Logo -->
+        <div class="hero-logo-wrap">
+          <img class="hero-logo" src="assets/anmane_logo.png" alt="ANMANE" draggable="false">
+        </div>
+
+        <p class="hero-subtext">INTERNET MUSIC PRODUCER</p>
+
+        <!-- Soviet/Cyber Telemetry Metrics Grid -->
+        <div class="telemetry-metrics-grid">
+          <div class="telemetry-card">
+            <div class="tc-top">
+              <span class="tc-label">01 // SPOTIFY CATALOG</span>
+              <span class="tc-spec">λ = 2.45m</span>
+            </div>
+            <span class="tc-number">6,000,000+</span>
+            <div class="tc-meter"><div class="tc-fill" style="width: 85%;"></div></div>
+            <span class="tc-caption">VERIFIED ARTIST STREAMS</span>
+          </div>
+
+          <div class="telemetry-card accent">
+            <div class="tc-top">
+              <span class="tc-label">02 // GHOST PRODUCTIONS</span>
+              <span class="tc-spec">+6.8 dB LUFS</span>
+            </div>
+            <span class="tc-number accent">50,000,000+</span>
+            <div class="tc-meter"><div class="tc-fill accent" style="width: 100%;"></div></div>
+            <span class="tc-caption">ANONYMOUS GLOBAL AUDIO</span>
+          </div>
+
+          <div class="telemetry-card">
+            <div class="tc-top">
+              <span class="tc-label">03 // CREATOR VIDEOS</span>
+              <span class="tc-spec">100k SYNC</span>
+            </div>
+            <span class="tc-number">100,000+</span>
+            <div class="tc-meter"><div class="tc-fill" style="width: 75%;"></div></div>
+            <span class="tc-caption">TIKTOK &amp; YOUTUBE SOUNDTRACKS</span>
+          </div>
+        </div>
+
+        <!-- Call to Action Buttons & Socials -->
+        <div class="hero-actions-box">
+          <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.308c-.215.352-.676.463-1.028.248-2.818-1.722-6.365-2.111-10.542-1.157-.402.092-.803-.16-.895-.562-.092-.403.159-.804.562-.896 4.571-1.045 8.492-.595 11.655 1.338.353.215.464.676.248 1.029zm1.469-3.268c-.27.44-.848.578-1.287.308-3.225-1.982-8.142-2.557-11.958-1.399-.494.15-1.022-.129-1.172-.623-.15-.493.129-1.022.623-1.172 4.364-1.324 9.776-.682 13.486 1.599.44.27.578.847.308 1.287zm.126-3.41c-3.867-2.296-10.248-2.508-13.941-1.387-.593.18-1.22-.155-1.399-.748-.18-.593.155-1.22.748-1.399 4.244-1.289 11.285-1.041 15.733 1.6 4.533.318.681 1.077.362 1.611-.318.533-1.077.68-1.611.362z"/>
+            </svg>
+            <span>Listen on Spotify</span>
           </a>
-          <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer">
-            <img class="social-icon" src="assets/spotify_icon.png" alt="Spotify" draggable="false">
-          </a>
-          <a href="https://www.instagram.com/anmane.prod/" target="_blank" rel="noopener noreferrer">
-            <img class="social-icon" src="assets/instagram_icon.png" alt="Instagram" draggable="false">
-          </a>
-          <a href="https://www.youtube.com/@anmaneprod" target="_blank" rel="noopener noreferrer">
-            <img class="social-icon" src="assets/youtube_icon.png" alt="YouTube" draggable="false">
+          <a href="https://www.patreon.com/c/ANMANE" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>Explore Patreon</span>
+            <span class="btn-arrow">↗</span>
           </a>
         </div>
+
+        <div class="hero-social-row">
+          <a href="https://www.tiktok.com/@anmane.prod" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="TikTok">
+            <img src="assets/tiktok_icon.png" alt="TikTok" class="social-icon-img">
+          </a>
+          <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Spotify">
+            <img src="assets/spotify_icon.png" alt="Spotify" class="social-icon-img">
+          </a>
+          <a href="https://www.instagram.com/anmane.prod/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram">
+            <img src="assets/instagram_icon.png" alt="Instagram" class="social-icon-img">
+          </a>
+          <a href="https://www.youtube.com/@anmaneprod" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="YouTube">
+            <img src="assets/youtube_icon.png" alt="YouTube" class="social-icon-img">
+          </a>
+        </div>
+
       </div>
 
-      <!-- FooterBar Marquee -->
-      <div class="marquee-container" style="position: absolute;">
-        <div class="marquee-track">
-          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+      <!-- Bottom Infinite Technical Marquee Tape -->
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+          <span class="marquee-track-item">LUNA VEM<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">DEYOS<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">GRIMDOR<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">MONTAGEM SAKURA<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">SENTO COMI<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">PALADIN<span class="marquee-dot">&middot;</span></span>
         </div>
-        <div class="marquee-track">
-          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+        <div class="marquee-content">
+          <span class="marquee-track-item">LUNA VEM<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">DEYOS<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">GRIMDOR<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">MONTAGEM SAKURA<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">SENTO COMI<span class="marquee-dot">&middot;</span></span>
+          <span class="marquee-track-item">PALADIN<span class="marquee-dot">&middot;</span></span>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <p class="stat-quote">
-        ANMANE has gained over <span class="stat-metric">3</span>m+ streams on spotify and over <span class="stat-metric">20</span>k videos using my music. Globally, my ghost productions have surpassed <span class="stat-metric">50</span>m+ streams.
-      </p>
-      <div class="stats-columns">
-        <div>
-          <p class="col-head">Releases with major labels such as:</p>
-          <ul class="col-list">
-            <li class="list-item">- LunarMedia</li>
-            <li class="list-item">- <span class="stat-metric">0</span>to<span class="stat-metric">8</span></li>
-            <li class="list-item">- ENARMA</li>
-            <li class="list-item">- Void</li>
-          </ul>
+    <!-- ==================== ABOUT ARTIST & SOUND PHYSICS ==================== -->
+    <section id="about" class="content-section reveal-on-scroll">
+      <div class="section-container">
+        
+        <!-- Section Badge -->
+        <div class="section-badge">
+          <span class="badge-dot"></span>
+          <span>[ 02 // ABOUT THE ARTIST ]</span>
         </div>
-        <div>
-          <p class="col-head">Collaborations with Artists like:</p>
-          <ul class="col-list">
-            <li class="list-item">- Dj Samir</li>
-            <li class="list-item">- Kobe Mane</li>
-            <li class="list-item">- Hwungii</li>
-            <li class="list-item">- nulled.</li>
-          </ul>
+
+        <!-- Main Impact Statement -->
+        <p class="stat-statement">
+          ANMANE has gained over <strong>6M+</strong> streams on Spotify and over <strong>100k</strong> creator videos. Globally, my ghost productions have surpassed <strong>50M+</strong> streams.
+        </p>
+
+        <!-- Artist Showcase Banner Card with Corner Brackets -->
+        <div class="showcase-banner">
+          <div class="corner-bracket top-left">+</div>
+          <div class="corner-bracket top-right">+</div>
+          <div class="corner-bracket bottom-left">+</div>
+          <div class="corner-bracket bottom-right">+</div>
+
+          <div class="banner-media-container">
+            <img src="assets/daw_showcase.png" alt="ANMANE FL Studio & Sound Design" class="banner-artwork-img" loading="lazy">
+            <div class="banner-cyber-overlay"></div>
+          </div>
+          
+          <div class="avatar-badge-wrap">
+            <div class="avatar-circle">
+              <img src="assets/avatar.jpg" alt="ANMANE Avatar" class="avatar-img">
+            </div>
+            <div class="avatar-title-group">
+              <h3 class="avatar-name">ANMANE</h3>
+              <span class="verified-icon" title="Verified Artist">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Real-Time Oscilloscope Wave Box -->
+        <div class="telemetry-radar-box">
+          <div class="radar-header">
+            <span class="radar-title">[SOUND WAVES]</span>
+            <span class="radar-rate">λ = 2.45m // +6.8 dB LUFS</span>
+          </div>
+          <div class="radar-oscilloscope-wrap">
+            <canvas id="telemetry-wave-canvas" height="56"></canvas>
+          </div>
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <!-- ==================== ALL RELEASES ==================== -->
+    <section id="releases" class="content-section reveal-on-scroll">
+      <div class="section-container">
+        
+        <div class="section-header-row">
+          <div class="section-title-wrap">
+            <h2 class="section-title">All Releases</h2>
+          </div>
+          <div class="carousel-nav-buttons">
+            <button id="carousel-prev" class="carousel-arrow" aria-label="Previous releases">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button id="carousel-next" class="carousel-arrow" aria-label="Next releases">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Release Cards Carousel -->
+        <div id="releases-carousel" class="releases-carousel-track">
+          
+          <!-- 01: FINGOLFIN -->
+          <a href="https://open.spotify.com/search/ANMANE%20FINGOLFIN" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <span class="release-badge-new">NEW</span>
+              <img src="assets/covers/fingolfin.jpg" alt="FINGOLFIN Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">FINGOLFIN</h4>
+              <p class="release-meta">Latest Release &nbsp;·&nbsp; EP</p>
+            </div>
+          </a>
+
+          <!-- 02: MONTAGEM VATICINIO -->
+          <a href="https://open.spotify.com/search/ANMANE%20MONTAGEM%20VATICINIO" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/montagem_vaticinio.jpg" alt="MONTAGEM VATICINIO Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">MONTAGEM VATICINIO</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 03: PALADIN -->
+          <a href="https://open.spotify.com/search/ANMANE%20PALADIN" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/paladin.jpg" alt="PALADIN Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">PALADIN</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 04: MONTAGEM PURGA -->
+          <a href="https://open.spotify.com/search/ANMANE%20MONTAGEM%20PURGA" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/montagem_purga.jpg" alt="MONTAGEM PURGA Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">MONTAGEM PURGA</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 05: PEREGRINE FUNK -->
+          <a href="https://open.spotify.com/search/ANMANE%20PEREGRINE%20FUNK" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/peregrine_funk.jpg" alt="PEREGRINE FUNK Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">PEREGRINE FUNK</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 06: MONTAGEM XOLO -->
+          <a href="https://open.spotify.com/search/ANMANE%20MONTAGEM%20XOLO" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/montagem_xolo.jpg" alt="MONTAGEM XOLO Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">MONTAGEM XOLO</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 07: zanset -->
+          <a href="https://open.spotify.com/search/ANMANE%20zanset" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/zanset.jpg" alt="zanset Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">zanset</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 08: LUNA VEM -->
+          <a href="https://open.spotify.com/album/3WHQMF5olk4VilFg5FzzKS" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/luna_vem.jpg" alt="LUNA VEM Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">LUNA VEM</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 09: DEYOS -->
+          <a href="https://open.spotify.com/search/ANMANE%20DEYOS" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/deyos.jpg" alt="DEYOS Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">DEYOS</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 10: GRIMDOR -->
+          <a href="https://open.spotify.com/search/ANMANE%20GRIMDOR" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/grimdor.jpg" alt="GRIMDOR Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">GRIMDOR</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 11: MONTAGEM SAKURA -->
+          <a href="https://open.spotify.com/search/ANMANE%20MONTAGEM%20SAKURA" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/montagem_sakura.jpg" alt="MONTAGEM SAKURA Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">MONTAGEM SAKURA</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 12: SENTO COMI -->
+          <a href="https://open.spotify.com/search/ANMANE%20SENTO%20COMI" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/sento_comi.jpg" alt="SENTO COMI Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">SENTO COMI</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
+          <!-- 13: DtMF FUNK -->
+          <a href="https://open.spotify.com/search/ANMANE%20DtMF%20FUNK" target="_blank" rel="noopener noreferrer" class="release-card">
+            <div class="release-cover">
+              <img src="assets/covers/dtmf_funk.jpg" alt="DtMF FUNK Artwork" class="release-cover-img" loading="lazy">
+              <div class="play-overlay">
+                <div class="play-circle">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="release-info">
+              <h4 class="release-title">DtMF FUNK</h4>
+              <p class="release-meta">EP &nbsp;·&nbsp; 2026</p>
+            </div>
+          </a>
+
         </div>
       </div>
+    </section>
 
-      <!-- FooterBar Marquee -->
-      <div class="marquee-container" style="position: absolute;">
-        <div class="marquee-track">
-          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+    <!-- ==================== PROJECT FILES ==================== -->
+    <section id="patreon" class="content-section reveal-on-scroll">
+      <div class="section-container">
+        
+        <!-- Section Badge -->
+        <div class="section-badge">
+          <span class="badge-dot"></span>
+          <span>[ 04 // PROJECT FILES ]</span>
         </div>
-        <div class="marquee-track">
-          <span class="marquee-item">LUNA VEM<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">DEYOS<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">GRIMDOR<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">MONTAGEM SAKURA<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">SENTO COMI<span class="marquee-sep">&middot;</span></span>
-          <span class="marquee-item">FLUIR!<span class="marquee-sep">&middot;</span></span>
+
+        <div class="community-grid">
+          
+          <!-- Left Info Box -->
+          <div class="community-info">
+            <span class="vault-tag">// ACCESS LEVEL: FL STUDIO PROJECT FILES</span>
+            <h2 class="community-title">Access Patreon</h2>
+            <p class="community-description">
+              Direct access to official FL Studio Project Files (.FLP). Want to see how the music is built? Join and explore all project files.
+            </p>
+            <a href="https://www.patreon.com/c/ANMANE" target="_blank" rel="noopener noreferrer" class="btn btn-primary community-cta">
+              <span>[ ACCESS PATREON ]</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Right Showcase Card -->
+          <div class="community-card">
+            <div class="community-card-header">
+              <div class="community-card-avatar">
+                <img src="assets/patreon_icon.png" alt="Patreon" class="community-avatar-img">
+              </div>
+              <div class="community-card-meta">
+                <h4 class="community-card-name">PATREON</h4>
+                <span class="community-status">
+                  <span class="status-dot-green"></span>
+                  Official Sound Server
+                </span>
+              </div>
+            </div>
+            <div class="community-card-body">
+              <div class="community-visual-art">
+                <img src="assets/daw_showcase.png" alt="FL Studio &amp; Serum Project Files" class="visual-project-preview" loading="lazy">
+                <div class="visual-cyber-overlay"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </section>
   </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">ANMANE</span>
+        <p class="footer-copy">// Music for the internet // 2026. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://open.spotify.com/artist/17yZYUD9pmHQQY6EHbY4oq?si=z1auLaALQey-xCl69ETigw" target="_blank" rel="noopener noreferrer" class="footer-link">Spotify</a>
+        <a href="https://www.tiktok.com/@anmane.prod" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a>
+        <a href="https://www.instagram.com/anmane.prod/" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+        <a href="https://www.youtube.com/@anmaneprod" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        <a href="https://www.patreon.com/c/ANMANE" target="_blank" rel="noopener noreferrer" class="footer-link">Patreon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
