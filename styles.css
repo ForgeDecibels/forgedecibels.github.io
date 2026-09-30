@@ -498,6 +498,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-social-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   margin-bottom: 36px;
 }
